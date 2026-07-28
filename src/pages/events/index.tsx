@@ -1,6 +1,7 @@
-const Page=()=>{
+const EventsPage=()=>{
     return (
      <div>
+      <h1>Event Page</h1>
        <a href="">
          <img />
          <h2>Events in London</h2>
@@ -19,4 +20,5 @@ const Page=()=>{
     );
 }
 
-export default Page;
+export default EventsPage;
+

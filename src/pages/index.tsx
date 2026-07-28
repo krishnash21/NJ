@@ -39,3 +39,11 @@ const Page=()=>{
 }
 
 export default Page;
+
+export function getServerSideProps(){
+   return{
+      props:{
+         title:"Hello Everyone!"
+      },
+   };
+}
