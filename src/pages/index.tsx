@@ -18,9 +18,12 @@ const Page=({data}:{data:EventCategory[] })=>{
       </nav>
 
       {data.map((ev)=>(
-         <a key={ev.id} href={`/events/${ev.id}`}>
-            <Image width={300} height={300} alt={ev.title} src={ev.image} /><h2>{ev.title}</h2><p>
-               {ev.description}</p>
+         <a key={ev.id} href={`/events/${ev.id}`} style={{ display: "block" }}>
+            <div style={{ position: "relative", width: 300, height: 300 }}>
+               <Image src={ev.image} alt={ev.title} fill sizes="300px" loading="eager" style={{ objectFit: "cover" }} />
+            </div>
+            <h2>{ev.title}</h2>
+            <p>{ev.description}</p>
             </a>))}
      </header>
 
