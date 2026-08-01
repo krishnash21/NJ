@@ -1,17 +1,32 @@
 import { GetStaticPropsContext } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
-const EventsCategoryPage=()=>{
+type Event = {
+    id: string;
+    title: string;
+    city: string;
+    description: string;
+    image: string;
+    emails_registered: string[];
+};
+
+type EventsCategoryPageProps = {
+    data: Event[];
+};
+
+const EventsCategoryPage=({data}: EventsCategoryPageProps)=>{
     return (
         <div>
             <h1>Events in London</h1>
 
             <div>
-                <a href="/events/london/ev1">Event 1</a>
-                <a href="">Event 2</a>
-                <a href="">Event 3</a>
-                <a href="">Event 4</a>
-                <a href="">Event 5</a>
-                <a href="">Event 6</a>
+                {data.map((ev: Event)=>(
+                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`}>
+                        <Image width={300} height={300} alt={ev.title} src={ev.image} />
+                        <h2>{ev.title}</h2>
+                    </Link>
+                ))}
             </div>
         </div>
     );
@@ -43,7 +58,7 @@ export async function getStaticProps(context: GetStaticPropsContext){
     const {allEvents}=await import('../../../../data/data.json');
     
     
-    const data=allEvents.filter((ev)=>ev.city===id);
+    const data=allEvents.filter((ev: Event)=>ev.city.toLowerCase()===id?.toString().toLowerCase());
     return{
         props:{data}
     };
