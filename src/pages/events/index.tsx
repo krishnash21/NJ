@@ -1,11 +1,22 @@
 import Image from "next/image";
 
-const EventsPage=({data})=>{
+type EventCategory = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+type EventsPageProps = {
+  data: EventCategory[];
+};
+
+const EventsPage=({data}: EventsPageProps)=>{
     return (
      <div>
       <h1>Event Page</h1>
       <div>
-         {data.map(ev=>(
+         {data.map((ev: EventCategory)=>(
             <a key={ev.id} href={`/events/${ev.id}`} style={{ display: "block" }}>
                <div style={{ position: "relative", width: 300, height: 300 }}>
                   <Image src={ev.image} alt={ev.title} fill sizes="300px" style={{ objectFit: "cover" }} />
