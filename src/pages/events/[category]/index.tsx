@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPropsContext } from "next";
 
 const EventsCategoryPage=()=>{
     return (
@@ -37,12 +37,14 @@ export async function getStaticPaths(){
     };
 }
 
-export async function getStaticProps(context: GetStaticProps){
+export async function getStaticProps(context: GetStaticPropsContext){
     console.log(context);
+    const id=context.params?.category;
     const {allEvents}=await import('../../../../data/data.json');
+    
+    
+    const data=allEvents.filter((ev)=>ev.city===id);
     return{
-        props:{}
+        props:{data}
     };
 }
-
-
