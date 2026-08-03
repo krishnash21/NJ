@@ -13,12 +13,13 @@ type Event = {
 
 type EventsCategoryPageProps = {
     data: Event[];
+    pageName: string;
 };
 
-const EventsCategoryPage=({data}: EventsCategoryPageProps)=>{
+const EventsCategoryPage=({data,pageName}: EventsCategoryPageProps)=>{
     return (
         <div>
-            <h1>Events in London</h1>
+            <h1>Events in {pageName}</h1>
 
             <div>
                 {data.map((ev: Event)=>(
@@ -61,6 +62,6 @@ export async function getStaticProps(context: GetStaticPropsContext){
     
     const data=allEvents.filter((ev: Event)=>ev.city.toLowerCase()===id?.toString().toLowerCase());
     return{
-        props:{data}
+        props:{data, pageName: id}
     };
 }
