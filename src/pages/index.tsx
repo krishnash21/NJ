@@ -13,9 +13,15 @@ const Page=({data}:{data:EventCategory[] })=>{
     <div>
     <header>
      <nav style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}> 
-      <a href="/">Home</a>
-      <a href="/events">Events</a>
-      <a href="/aboutus">About Us</a>
+       <Link href="/" passHref>
+        <a>Home</a>
+       </Link>
+       <Link href="/events" passHref>
+        <a>Events</a>
+       </Link>
+       <Link href="/aboutus" passHref>
+        <a>About Us</a>
+       </Link>
       </nav>
 
       {data.map((ev)=>(
