@@ -18,13 +18,11 @@ const EventsPage=({data}: EventsPageProps)=>{
       <h1>Event Page</h1>
       <div>
          {data.map((ev: EventCategory)=>(
-            <Link key={ev.id} href={`/events/${ev.id}`} passHref>
-            <a key={ev.id} href={`/events/${ev.id}`} style={{ display: "block" }}>
+            <Link key={ev.id} href={`/events/${ev.id}`} >
                <div style={{ position: "relative", width: 300, height: 300 }}>
                   <Image src={ev.image} alt={ev.title} fill sizes="300px" style={{ objectFit: "cover" }} />
                </div>
                <h2>{ev.title}</h2>
-            </a>
             </Link>
          ))}
       </div>
